@@ -1,0 +1,6 @@
+services:
+  devcontainer:
+    build: ./docker
+    tty: true
+    volumes:
+      - ../:/home/vscode/workspace
