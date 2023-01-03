@@ -1,5 +1,5 @@
 {
-    "name": "devcontainer-jemmy-tmpl",
+    "name": "rust-playground",
     "dockerComposeFile": ["docker-compose.yml"],
     "service": "devcontainer",
 	"remoteEnv": {
