@@ -1,5 +1,7 @@
 use daemonize::Daemonize;
 
+use std::fs::File;
+
 fn main_loop() {
     loop {
         println!("Hello, world!");
@@ -8,15 +10,17 @@ fn main_loop() {
 }
 
 fn main() {
+    let stdout = File::create("/tmp/daemon.out").unwrap();
+    let stderr = File::create("/tmp/daemon.err").unwrap();
+
     let daemonize = Daemonize::new()
         .pid_file("/tmp/test.pid")
         .working_directory("/tmp")
         .user("nobody")
         .group("daemon")
         .umask(0o027)
-        .stdout(std::fs::File::create("/tmp/daemon.out").unwrap())
-        .stderr(std::fs::File::create("/tmp/daemon.err").unwrap())
-        .exit_action(|| println!("Executed before master process exits"))
+        .stdout(stdout)
+        .stderr(stderr)
         .privileged_action(|| "Executed before drop privileges");
 
     match daemonize.start() {
