@@ -6,7 +6,8 @@
 		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
 	},
     // "remoteUser": "vscode",
-    "workspaceFolder": "/home/vscode/workspace"
+    // "workspaceFolder": "/home/vscode/workspace"
+    "workspaceFolder": "/workspace"
     // "extensions": [
     // ]
 }
